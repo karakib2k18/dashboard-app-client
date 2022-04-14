@@ -10,6 +10,7 @@ import { CircularProgress, Grid, Typography } from "@mui/material";
 
 import ViewStudentTable from "./ViewStudentTable";
 import { Box } from "@mui/system";
+import SearchStudent from "./SearchStudent";
 
 const ViewStudent = () => {
   const [allStudentList, setAllStudentList] = React.useState([]);
@@ -34,9 +35,10 @@ const ViewStudent = () => {
 
   return (
     <Box>
-      <Typography gutterBottom variant="h5" component="div">
+      <Typography sx={{ mb:3}} gutterBottom variant="h5" component="div">
         View Student
       </Typography>
+      <SearchStudent></SearchStudent>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={1}></Grid>
         <Grid item xs={12} sm={12}>

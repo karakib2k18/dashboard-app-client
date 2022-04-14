@@ -108,7 +108,7 @@ const ViewStudent = (props) => {
         {allStudent?.name}
       </TableCell>
       <TableCell sx={{ fontSize: 18 }} align="center">
-        {allStudent?.email}
+        {allStudent?.age}
       </TableCell>
       <TableCell sx={{ fontSize: 18 }} align="center">
         {allStudent?.school}

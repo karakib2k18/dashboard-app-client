@@ -8,7 +8,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
+// import FormLabel from "@mui/material/FormLabel";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { Container, Typography } from "@mui/material";
@@ -77,6 +77,10 @@ const AddStudent = () => {
   const handleChangeClassa = (event) => {
     setClassa(event.target.value);
   };
+  const [age, setAge] = React.useState("");
+  const handleChangeAge = (event) => {
+    setAge(event.target.value);
+  };
   const [status, setstatus] = React.useState("");
   const handleChangestatus = (event) => {
     setstatus(event.target.value);
@@ -135,6 +139,37 @@ const AddStudent = () => {
                         </LocalizationProvider>
                       </FormControl>
                     </Box>
+                  </Grid>
+                </Grid>
+
+                <Grid className="displayfle" item xs={12}>
+                  <Grid item xs={3} sm={3}>
+                    Age
+                  </Grid>
+                  <Grid item xs={9} sm={9}>
+                  <Box sx={{ minWidth: 120 }}>
+                    <FormControl fullWidth>
+                      <InputLabel id="demo-simple-select-label">
+                        Age
+                      </InputLabel>
+                      <Select
+                        {...register("age", { required: true })}
+                        labelId="age"
+                        id="age"
+                        value={age}
+                        label="age"
+                        onChange={handleChangeAge}
+                        required
+                      >
+                        <MenuItem value={10}>10</MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={13}>13</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={15}>15</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
                   </Grid>
                 </Grid>
 
