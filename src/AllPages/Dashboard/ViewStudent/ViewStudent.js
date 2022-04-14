@@ -15,7 +15,7 @@ const ViewStudent = () => {
   const [allStudentList, setAllStudentList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   React.useEffect(() => {
-    fetch("http://localhost:5000/addstudent")
+    fetch("https://fierce-waters-04653.herokuapp.com/addstudent")
       .then((response) => response.json())
       .then((json) => {
         setAllStudentList(json);
