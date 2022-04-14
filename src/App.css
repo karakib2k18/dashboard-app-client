@@ -1,0 +1,107 @@
+.App {
+  /* text-align: center; */
+}
+#myorderedit {
+  line-height: 4.43 !important;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+#customize-delete-id-byme{
+  text-decoration: underline;
+}
+.css-fyl3tx {
+  display: flex;
+  justify-content: center !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.css-26w9jf-MuiMobileStepper-dot {
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #9a1ad5 !important;
+  border-radius: 50%;
+  width: 15px !important;
+  height: 15px !important;
+  margin: 0 2px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.css-1hkn6ch-MuiButtonBase-root-MuiButton-root {
+  color: red !important;
+}
+
+/* 
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: #750606 !important;
+  color: #fff;
+  box-shadow: 10px 10px 5px lightblue !important;
+} */
+
+.navbarcolor{
+  background-color: #750606 !important;
+  color: #fff;
+  box-shadow: 10px 10px 5px lightblue !important;
+}
+/* 
+.theaddesign {
+  background-color: #750606 !important;
+  color: #fff !important;
+  box-shadow: 10px 10px 5px lightblue !important;
+} */
+
+
+.borderright{
+  border-right: 2px solid black !important;
+
+}
+
+.css-14jhzr5 {
+  display: flex !important;
+  justify-content: left;
+}
+
+.displayfle{
+  display: flex !important;
+  align-items: center;
+}
+
+.buttondesign{
+  background-color: #780707  !important;
+  color: #fff !important;
+  padding: 12px 0px !important;
+  margin: 1px 0px !important;
+  font-weight: bold !important;
+  border-radius: 20px !important;
+  /* background-color: #; */
+
+}
