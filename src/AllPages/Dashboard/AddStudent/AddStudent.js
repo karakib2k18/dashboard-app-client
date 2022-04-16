@@ -19,6 +19,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import StudentEdit from "../StudentEdit/StudentEdit";
 
 const AddStudent = () => {
   const { register, handleSubmit, reset } = useForm();

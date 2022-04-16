@@ -41,11 +41,11 @@ const SearchStudent = () => {
 
   return (
     <Box>
-      <Container maxWidth="lg">
-        <Grid container spacing={2}>
+      <Container maxWidth="xl">
+        <Grid container spacing={1}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Grid>
-              <Grid className="displayfle" item xs={12}>
+              <Grid className="displayfle" item sm={12} xs={12}>
                 <Grid item xs={2} sm={2}>
                   {user?.displayName && (
                     <TextField

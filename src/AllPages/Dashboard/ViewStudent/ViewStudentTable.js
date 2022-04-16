@@ -1,65 +1,14 @@
 import * as React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { Button, CircularProgress, FormControl } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import swal from "sweetalert";
 import Box from "@mui/material/Box";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import { useForm } from "react-hook-form";
+import StudentEdit from "../StudentEdit/StudentEdit";
 
 const ViewStudent = (props) => {
   const { allStudent, setAllStudentList, allStudentList, setIsLoading, isLoading } =
     props;
-    console.log(allStudent);
-  const [updateForm, setupdateForm] = React.useState(false);
-  const { register, handleSubmit, reset } = useForm();
-  const [userUpdate, setUserUpdate] = React.useState({});
-
-  const handleEditButton = (id) => {
-    // reset();
-    fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        // const statusUpdate = allBookings.filter(()=>allbook.data === data.status)
-        setUserUpdate(data);
-      });
-  };
-
-  const onSubmit = (data) => {
-    console.log(userUpdate._id);
-    let updateStatus = { ...userUpdate };
-    updateStatus.status = data.status;
-    setUserUpdate(updateStatus);
-    console.log(data);
-
-    const url = `https://fierce-waters-04653.herokuapp.com/addstudent/${data._id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        // 'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(updateStatus),
-    })
-      .then((res) => res.json())
-      .then((datan) => {
-        if (datan.modifiedCount > 0) {
-          setIsLoading(true);
-          swal("Change successfully!!", "done", "success", {
-            button: false,
-            timer: 1300,
-          });
-          reset();
-          setUserUpdate({});
-          setIsLoading(false);
-        }
-      });
-
-    setupdateForm(false);
-  };
-
   const handleDeleteButton = (id) => {
     // console.log(id);
     swal({
@@ -120,55 +69,20 @@ const ViewStudent = (props) => {
         {allStudent?.division}
       </TableCell>
       <TableCell sx={{ fontSize: 18 }} align="right">
-        {!updateForm && (
+
           <Box
           >
             {allStudent?.status}
           </Box>
-        )}
 
-        {updateForm && (
-          <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl fullWidth>
-                <Select
-                  {...register("status", { required: true })}
-                  labelId="status"
-                  id="status"
-                  label="status"
-                  required
-                >
-                  <MenuItem value="Active">Active</MenuItem>
-                  <MenuItem value="InActive">InActive</MenuItem>
-                </Select>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{ m: 1, mb: 1, fontWeight: "bold" }}
-                >
-                  Update
-                </Button>
-              </FormControl>
-            </form>
-          </Box>
-        )}
       </TableCell>
       {isLoading && <CircularProgress />}
       <TableCell sx={{ fontSize: 18 }} align="right">
-        {!updateForm && (
+
           <Button
-            type="submit"
-            id="customize-delete-id-byme"
-            // variant="contained"
-            sx={{ m: 1, mb: 1, fontWeight: "bold" }}
-            onClick={() => {
-              setupdateForm(true);
-              handleEditButton(allStudent?._id);
-            }}
           >
-            Edit
+           <StudentEdit isLoading={isLoading} key={allStudent?._id} allStudent={allStudent} setIsLoading={setIsLoading} isLoading={isLoading}></StudentEdit>
           </Button>
-        )}
 
         <Button
           type="submit"

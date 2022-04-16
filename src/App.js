@@ -7,7 +7,6 @@ import Login from "./AllPages/Shared/LoginSignUp/Login/Login";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import PrivateRoute from "./AllPages/Shared/PrivateRoute/PrivateRoute";
 import Dashboard from "./AllPages/Dashboard/Dashboard/Dashboard";
-import HomePage from "./AllPages/HomePage/HomePage";
 
 
 function App() {
@@ -18,10 +17,10 @@ function App() {
             <Navbar />
             <Switch>
               <PrivateRoute exact path="/">
-                <HomePage />
+                <Dashboard />
               </PrivateRoute>
               <PrivateRoute path="/dashboard">
-                <HomePage />
+                <Dashboard />
               </PrivateRoute>
               <Route path="/login">
                 <Login />

@@ -14,7 +14,7 @@ import useAuth from "../../../hooks/useAuth";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
-const drawerWidth = 250;
+const drawerWidth = 200;
 
 function Dashboard(props) {
   const { user } = useAuth();
@@ -27,7 +27,7 @@ function Dashboard(props) {
   };
 
   const drawer = (
-    <Box className="rightborder">
+    <Box >
       <Toolbar />
       {/* <Divider /> */}
 
@@ -45,7 +45,6 @@ function Dashboard(props) {
               >
                 <PeopleOutlineIcon></PeopleOutlineIcon>
                 <Box sx={{ px: 2 }}> View Student</Box>
-                
               </Button>
             </Link>
             {/* singlelink */}
@@ -56,9 +55,8 @@ function Dashboard(props) {
                 // variant="contained"
                 sx={{ mt: 1, mb: 1, fontWeight: "bold" }}
               >
-                <AccountBoxIcon ></AccountBoxIcon>
+                <AccountBoxIcon></AccountBoxIcon>
                 <Box sx={{ px: 2 }}> Add Student</Box>
-                
               </Button>
             </Link>
           </Box>
@@ -71,10 +69,10 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-<Box sx={{ display: "flex" }}>
+    <Box sx={{ m: 9, boxShadow: 3, display: "flex" }}>
       <CssBaseline />
 
-      <Box
+      {/* <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
@@ -96,7 +94,12 @@ function Dashboard(props) {
             },
           }}
         >
-          {drawer}
+          <Box
+            // style={{ backgroundColor: "transparent", position: "relative" }}
+            sx={{ mt: 7, boxShadow: 3 }}
+          >
+            {drawer}
+          </Box>
         </Drawer>
         <Drawer
           variant="permanent"
@@ -109,9 +112,23 @@ function Dashboard(props) {
           }}
           open
         >
-          {drawer}
+          <Box
+            // style={{ backgroundColor: "transparent", position: "relative" }}
+            sx={{ mt: 7, boxShadow: 3 }}
+          >
+            {drawer}
+          </Box>
         </Drawer>
-      </Box>
+      </Box> */}
+
+
+          <Box
+            // style={{ backgroundColor: "transparent", position: "relative" }}
+            // sx={{ mt: 7, boxShadow: 3 }}
+            className="borderright"
+          >
+            {drawer}
+          </Box>
       <Box
         component="main"
         sx={{
