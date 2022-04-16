@@ -172,7 +172,7 @@ const SearchStudent = () => {
                       sx={{ minWidth: 120, mt: 1, mb: 1, fontWeight: "bold" }}
                       style={{ backgroundColor: "#750606", color: "white" }}
                     >
-                      Save
+                      Search
                     </Button>
                   </Box>
                 </Grid>
