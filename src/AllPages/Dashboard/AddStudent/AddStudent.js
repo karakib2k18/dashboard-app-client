@@ -14,16 +14,15 @@ import Button from "@mui/material/Button";
 import { Container, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
-import useAuth from "../../../hooks/useAuth";
+// import useAuth from "../../../hooks/useAuth";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import StudentEdit from "../StudentEdit/StudentEdit";
 
 const AddStudent = () => {
   const { register, handleSubmit, reset } = useForm();
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   //send data to the server
   const onSubmit = (data) => {
@@ -106,18 +105,14 @@ const AddStudent = () => {
                     Full Name
                   </Grid>
                   <Grid item xs={9} sm={9}>
-                    {user?.displayName && (
-                      <TextField
-                        margin="normal"
-                        {...register("name", { required: true })}
-                        fullWidth
-                        name="name"
-                        label="Name"
-                        type="text"
-                        id="name"
-                        defaultValue={user?.displayName}
-                      />
-                    )}
+                    <TextField
+                      {...register("name", { required: true })}
+                      fullWidth
+                      name="name"
+                      label="Name"
+                      type="text"
+                      id="name"
+                    />
                   </Grid>
                 </Grid>
                 <Grid className="displayfle" item xs={12}>
@@ -163,11 +158,11 @@ const AddStudent = () => {
                         required
                       >
                         <MenuItem value={10}>10</MenuItem>
+                        <MenuItem value={11}>11</MenuItem>
                         <MenuItem value={12}>12</MenuItem>
                         <MenuItem value={13}>13</MenuItem>
                         <MenuItem value={14}>14</MenuItem>
                         <MenuItem value={15}>15</MenuItem>
-                        <MenuItem value={16}>16</MenuItem>
                       </Select>
                     </FormControl>
                   </Box>

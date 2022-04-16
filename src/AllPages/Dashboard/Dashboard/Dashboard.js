@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
+// import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
-import Toolbar from "@mui/material/Toolbar";
+// import Toolbar from "@mui/material/Toolbar";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import { Button } from "@mui/material";
 import ViewStudent from "../ViewStudent/ViewStudent";
@@ -18,18 +18,18 @@ const drawerWidth = 200;
 
 function Dashboard(props) {
   const { user } = useAuth();
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  // const { window } = props;
+  // const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  // const handleDrawerToggle = () => {
+  //   setMobileOpen(!mobileOpen);
+  // };
 
   const drawer = (
     <Box >
-      <Toolbar />
-      {/* <Divider /> */}
+      {/* <Toolbar />
+      <Divider /> */}
 
       <List sx={{ p: 2 }}>
         {(user?.displayName || user?.email) && (
@@ -65,8 +65,8 @@ function Dashboard(props) {
       <Divider />
     </Box>
   );
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  // const container =
+  //   window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ m: 9, boxShadow: 3, display: "flex" }}>
@@ -137,7 +137,7 @@ function Dashboard(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        <Toolbar />
+        {/* <Toolbar /> */}
         <Switch>
           <Route exact path={path}>
             <ViewStudent></ViewStudent>

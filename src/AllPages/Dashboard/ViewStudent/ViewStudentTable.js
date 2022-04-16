@@ -81,7 +81,7 @@ const ViewStudent = (props) => {
 
           <Button
           >
-           <StudentEdit isLoading={isLoading} key={allStudent?._id} allStudent={allStudent} setIsLoading={setIsLoading} isLoading={isLoading}></StudentEdit>
+           <StudentEdit isLoading={isLoading} key={allStudent?._id} allStudent={allStudent} setIsLoading={setIsLoading} ></StudentEdit>
           </Button>
 
         <Button

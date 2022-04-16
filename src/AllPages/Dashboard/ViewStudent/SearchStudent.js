@@ -5,20 +5,31 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { Container } from "@mui/material";
 import { useForm } from "react-hook-form";
-import useAuth from "../../../hooks/useAuth";
+// import useAuth from "../../../hooks/useAuth";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import ViewStudentTable from "./ViewStudentTable";
 
 const SearchStudent = () => {
   const { register, handleSubmit } = useForm();
-  const { user } = useAuth();
+  // const { user } = useAuth();
+  const [userSearchList, setUserSearchList] = React.useState();
 
   //send data to the server
   const onSubmit = (data) => {
-    console.log(data);
-  };
+    // console.log(data);
+
+      fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/`)
+        .then((res) => res.json())
+        .then((searchdatas) => {
+          // console.log(data);
+          const statusUpdate = searchdatas.filter((searchdata)=>((searchdata.age === data.age) && (searchdata.school === data.school) && (searchdata.classa === data.classa) && (searchdata.division === data.division) && (searchdata.name[0] === data.name[0]) ))
+          setUserSearchList(statusUpdate);
+        });
+      };
+      // console.log(userSearchList);
 
   const [division, setDivision] = React.useState("");
   const handleChangedivision = (event) => {
@@ -47,7 +58,7 @@ const SearchStudent = () => {
             <Grid>
               <Grid className="displayfle" item sm={12} xs={12}>
                 <Grid item xs={2} sm={2}>
-                  {user?.displayName && (
+                <Box sx={{ minWidth: 120 }}>
                     <TextField
                       {...register("name", { required: true })}
                       fullWidth
@@ -56,7 +67,7 @@ const SearchStudent = () => {
                       type="text"
                       id="name"
                     />
-                  )}
+                </Box>
                 </Grid>
                 <Grid item xs={1} sm={1}></Grid>
 
@@ -74,7 +85,12 @@ const SearchStudent = () => {
                         required
                       >
                         <MenuItem value={10}>10</MenuItem>
-                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={11}>11</MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={13}>13</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={15}>15</MenuItem>
+
                       </Select>
                     </FormControl>
                   </Box>
@@ -164,6 +180,18 @@ const SearchStudent = () => {
             </Grid>
           </form>
         </Grid>
+        <Box sx={{ my: 1, boxShadow: 3}}>
+        {userSearchList?.map((userSearch) => (
+                  <ViewStudentTable
+                    setAllStudentList={setUserSearchList}
+                    allStudentList={userSearchList}
+                    allStudent={userSearch}
+                    key={userSearch._id}
+                    // setIsLoading={setIsLoading}
+                    // isLoading={isLoading}
+                  ></ViewStudentTable>
+                ))}
+        </Box>
       </Container>
     </Box>
   );
