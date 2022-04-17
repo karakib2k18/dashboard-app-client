@@ -32,7 +32,7 @@ const SearchStudent = () => {
           searchdata.school === data.school &&
           searchdata.classa === data.classa &&
           searchdata.division === data.division &&
-          searchdata.name === data.name
+          searchdata.name[0] === data.name[0]
           );
           setUserSearchList(statusUpdate);
         });
