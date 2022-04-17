@@ -90,8 +90,8 @@ const AddStudent = () => {
   return (
     <Box>
       <Container maxWidth="lg">
-        <Typography gutterBottom variant="h5" component="div">
-          ADD A NEW STUDENT
+        <Typography style={{ color: "red" }} gutterBottom variant="h5" component="div">
+          Add A New Student
         </Typography>
         <Grid container spacing={2}>
           {/* <Grid item xs={12} sm={2}>

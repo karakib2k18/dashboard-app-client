@@ -48,7 +48,7 @@ const ViewStudent = () => {
 
   return (
     <Box>
-      <Typography sx={{ mb: 3 }} gutterBottom variant="h5" component="div">
+      <Typography sx={{ mb: 3 }} style={{color: 'red' }} gutterBottom variant="h5" component="div">
         {/* View Student {currentPage} {perPageItem} */}
         View Student
       </Typography>

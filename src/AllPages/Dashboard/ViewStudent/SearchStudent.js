@@ -192,11 +192,12 @@ const SearchStudent = () => {
           </Grid>
         </Grid>
         <Box sx={{ my: 1, boxShadow: 3 }}>
-          {userSearchList?.map((userSearch) => (
+          {userSearchList?.map((userSearch,index) => (
             <ViewStudentTable
               setAllStudentList={setUserSearchList}
               allStudentList={userSearchList}
               allStudent={userSearch}
+              index={index}
               key={userSearch._id}
               // setIsLoading={setIsLoading}
               // isLoading={isLoading}
