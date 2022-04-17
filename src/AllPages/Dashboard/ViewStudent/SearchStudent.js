@@ -23,20 +23,21 @@ const SearchStudent = () => {
 
     fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/`)
       .then((res) => res.json())
-      .then((searchdatas) => {
+      .then((founddatas) => {
         // console.log(data);
+        const searchdatas = founddatas.students;
         const statusUpdate = searchdatas.filter(
           (searchdata) =>
-            searchdata.age === data.age &&
-            searchdata.school === data.school &&
-            searchdata.classa === data.classa &&
-            searchdata.division === data.division &&
-            searchdata.name[0] === data.name[0]
-        );
-        setUserSearchList(statusUpdate);
-      });
-  };
-  // console.log(userSearchList);
+          searchdata.age === data.age &&
+          searchdata.school === data.school &&
+          searchdata.classa === data.classa &&
+          searchdata.division === data.division &&
+          searchdata.name === data.name
+          );
+          setUserSearchList(statusUpdate);
+        });
+      };
+      console.log(userSearchList);
 
   const [division, setDivision] = React.useState("");
   const handleChangedivision = (event) => {
