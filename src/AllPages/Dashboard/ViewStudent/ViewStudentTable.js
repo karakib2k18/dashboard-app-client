@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import StudentEdit from "../StudentEdit/StudentEdit";
 
 const ViewStudent = (props) => {
-  const { allStudent, setAllStudentList, allStudentList, setIsLoading, isLoading } =
+  const {index, allStudent, setAllStudentList, allStudentList, setIsLoading, isLoading } =
     props;
   const handleDeleteButton = (id) => {
     // console.log(id);
@@ -18,7 +18,7 @@ const ViewStudent = (props) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/${id}`, {
+        fetch(`http://localhost:5000/addstudent/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -46,12 +46,12 @@ const ViewStudent = (props) => {
 
   return (
     <TableRow
-      key={allStudent?.name}
+      key={allStudent?.index}
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>
         {/* {allStudent?._id} */}
-        #
+        # {(index+1)}
       </TableCell>
       <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>
         {allStudent?.name}

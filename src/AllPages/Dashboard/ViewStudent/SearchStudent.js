@@ -21,7 +21,7 @@ const SearchStudent = () => {
   const onSubmit = (data) => {
     // console.log(data);
 
-    fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/`)
+    fetch(`http://localhost:5000/addstudent/`)
       .then((res) => res.json())
       .then((searchdatas) => {
         // console.log(data);

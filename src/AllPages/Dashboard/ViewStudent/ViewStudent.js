@@ -18,14 +18,24 @@ import SearchStudent from "./SearchStudent";
 const ViewStudent = () => {
   const [allStudentList, setAllStudentList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [currentPage, setCurrentPage] =  React.useState(0);
+
+  const [studentCount, setStudentCount] = React.useState(0);
+  // const handlePagination = (num) => {
+  //   setCurrentPage(num);
+  // };
+  const perPageItem = 5;
+
   React.useEffect(() => {
-    fetch("https://fierce-waters-04653.herokuapp.com/addstudent")
+    fetch(`http://localhost:5000/addstudent?currentPage=${currentPage}&&perPageItem=${perPageItem}`)
       .then((response) => response.json())
-      .then((json) => {
-        setAllStudentList(json);
+      .then((data) => {
+        setAllStudentList(data.students);
+        setStudentCount(Math.ceil(data.count / perPageItem));
         setIsLoading(false);
+        console.log(data.students);
       });
-  }, [isLoading]);
+  }, [isLoading, currentPage]);
   const tableheader = [
     { name: "ID'V" },
     { name: "Home" },
@@ -39,6 +49,7 @@ const ViewStudent = () => {
   return (
     <Box>
       <Typography sx={{ mb: 3 }} gutterBottom variant="h5" component="div">
+        {/* View Student {currentPage} {perPageItem} */}
         View Student
       </Typography>
       <SearchStudent></SearchStudent>
@@ -61,7 +72,7 @@ const ViewStudent = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {allStudentList?.map((allStudent) => (
+                {allStudentList?.map((allStudent,index) => (
                   <ViewStudentTable
                     setAllStudentList={setAllStudentList}
                     allStudentList={allStudentList}
@@ -69,6 +80,7 @@ const ViewStudent = () => {
                     key={allStudent._id}
                     setIsLoading={setIsLoading}
                     isLoading={isLoading}
+                    index={index+(currentPage*perPageItem)}
                   ></ViewStudentTable>
                 ))}
               </TableBody>
@@ -79,7 +91,7 @@ const ViewStudent = () => {
       </Grid>
 
       <Grid container spacing={2}>
-      <Grid item xs={6} md={6} sm={6}>
+        <Grid item xs={6} md={6} sm={6}>
           <Button
             type="submit"
             variant="contained"
@@ -89,11 +101,28 @@ const ViewStudent = () => {
             Download Excel <DownloadIcon></DownloadIcon>
           </Button>
         </Grid>
-        <Grid item xs={4}  md={4} sm={4}>
-        </Grid>
-        <Grid item xs={2}  md={2} sm={2}>
+        <Grid item xs={6} md={6} sm={6} style={{ display: "flex", justifyContent:"right"}}>
           <Stack spacing={2}>
-            <Pagination count={3} color="secondary" variant="outlined" shape="rounded" />
+            <Pagination
+              count={studentCount}
+              color="secondary"
+              variant="outlined"
+              shape="rounded"
+              onChange={(e, value) => setCurrentPage(value-1)}
+              // onClick={(e, value) => handlePagination(value)}
+            />
+                {/* {allStudentList.length > 0 &&
+                [...Array(studentCount)?.keys()]?.map((number) => (
+                  <button
+                    key={number}
+                    onClick={() => handlePagination(number)}
+                    className={`border border-black px-4 py-2 ${
+                      number === currentPage ? "bg-gray-700 text-white" : ""
+                    }`}
+                  >
+                    {number}
+                  </button>
+                ))} */}
           </Stack>
         </Grid>
       </Grid>

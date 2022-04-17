@@ -34,7 +34,7 @@ const AddStudent = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch("https://fierce-waters-04653.herokuapp.com/addstudent", {
+        fetch("http://localhost:5000/addstudent", {
           method: "POST", // or 'PUT'
           headers: {
             "Content-Type": "application/json",
