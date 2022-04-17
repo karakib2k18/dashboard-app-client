@@ -6,7 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { CircularProgress, Grid, Typography } from "@mui/material";
+import { Button, CircularProgress, Grid, Typography } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import DownloadIcon from "@mui/icons-material/Download";
 
 import ViewStudentTable from "./ViewStudentTable";
 import { Box } from "@mui/system";
@@ -35,7 +38,7 @@ const ViewStudent = () => {
 
   return (
     <Box>
-      <Typography sx={{ mb:3}} gutterBottom variant="h5" component="div">
+      <Typography sx={{ mb: 3 }} gutterBottom variant="h5" component="div">
         View Student
       </Typography>
       <SearchStudent></SearchStudent>
@@ -48,7 +51,10 @@ const ViewStudent = () => {
               <TableHead sx={{ mb: -5 }} className="theaddesign">
                 <TableRow>
                   {tableheader.map((nav, index) => (
-                    <TableCell align="center" sx={{ fontSize: 22, color: 'white'}}>
+                    <TableCell
+                      align="center"
+                      sx={{ fontSize: 22, color: "white" }}
+                    >
                       {nav.name}
                     </TableCell>
                   ))}
@@ -70,6 +76,26 @@ const ViewStudent = () => {
           </TableContainer>
         </Grid>
         <Grid item xs={12} sm={1}></Grid>
+      </Grid>
+
+      <Grid container spacing={2}>
+      <Grid item xs={6} md={6} sm={6}>
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ minWidth: 120, mt: 1, mb: 1, fontWeight: "bold" }}
+            style={{ backgroundColor: "#750606", color: "white" }}
+          >
+            Download Excel <DownloadIcon></DownloadIcon>
+          </Button>
+        </Grid>
+        <Grid item xs={4}  md={4} sm={4}>
+        </Grid>
+        <Grid item xs={2}  md={2} sm={2}>
+          <Stack spacing={2}>
+            <Pagination count={3} color="secondary" variant="outlined" shape="rounded" />
+          </Stack>
+        </Grid>
       </Grid>
     </Box>
   );
