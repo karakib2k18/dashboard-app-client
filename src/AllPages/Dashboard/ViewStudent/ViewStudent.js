@@ -27,7 +27,7 @@ const ViewStudent = () => {
   const perPageItem = 5;
 
   React.useEffect(() => {
-    fetch(`http://localhost:5000/addstudent?currentPage=${currentPage}&&perPageItem=${perPageItem}`)
+    fetch(`https://fierce-waters-04653.herokuapp.com/addstudent?currentPage=${currentPage}&&perPageItem=${perPageItem}`)
       .then((response) => response.json())
       .then((data) => {
         setAllStudentList(data.students);

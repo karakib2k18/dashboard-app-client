@@ -54,7 +54,7 @@ export default function StudentEdit(props) {
 
   const handleEditButton = (id) => {
     // reset();
-    fetch(`http://localhost:5000/addstudent/${id}`)
+    fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/${id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -77,7 +77,7 @@ export default function StudentEdit(props) {
     console.log(data);
 
     setIsLoading(true);
-    const url = `http://localhost:5000/addstudent/${data._id}`;
+    const url = `https://fierce-waters-04653.herokuapp.com/addstudent/${data._id}`;
     fetch(url, {
       method: "PUT",
       headers: {
