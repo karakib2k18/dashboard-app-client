@@ -14,7 +14,7 @@ import ViewStudentTable from "./ViewStudentTable";
 
 const SearchStudent = () => {
   const { register, handleSubmit } = useForm();
-  // const { user } = useAuth();
+  const [isLoading, setIsLoading] = React.useState(true);
   const [userSearchList, setUserSearchList] = React.useState();
 
   //send data to the server
@@ -24,38 +24,38 @@ const SearchStudent = () => {
     fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/`)
       .then((res) => res.json())
       .then((founddatas) => {
-        // console.log(data);
+        console.log(data);
         const searchdatas = founddatas.students;
         const statusUpdate = searchdatas.filter(
           (searchdata) =>
-          searchdata.age === data.age &&
-          searchdata.school === data.school &&
-          searchdata.classa === data.classa &&
-          searchdata.division === data.division &&
-          searchdata.name[0] === data.name[0]
+          searchdata?.age === data?.age ||
+          searchdata?.school === data?.school ||
+          searchdata?.classa === data?.classa ||
+          searchdata?.division === data?.division ||
+          searchdata?.name[0] === data?.name[0]
           );
           setUserSearchList(statusUpdate);
         });
       };
       console.log(userSearchList);
 
-  const [division, setDivision] = React.useState("");
-  const handleChangedivision = (event) => {
-    setDivision(event.target.value);
-  };
+  // const [division, setDivision] = React.useState("");
+  // const handleChangedivision = (event) => {
+  //   setDivision(event.target.value);
+  // };
 
-  const [school, setSchool] = React.useState("");
-  const handleChangeSchool = (event) => {
-    setSchool(event.target.value);
-  };
-  const [classa, setClassa] = React.useState("");
-  const handleChangeClassa = (event) => {
-    setClassa(event.target.value);
-  };
-  const [age, setAge] = React.useState("");
-  const handleChangeAge = (event) => {
-    setAge(event.target.value);
-  };
+  // const [school, setSchool] = React.useState("");
+  // const handleChangeSchool = (event) => {
+  //   setSchool(event.target.value);
+  // };
+  // const [classa, setClassa] = React.useState("");
+  // const handleChangeClassa = (event) => {
+  //   setClassa(event.target.value);
+  // };
+  // const [age, setAge] = React.useState("");
+  // const handleChangeAge = (event) => {
+  //   setAge(event.target.value);
+  // };
   //   const [value, setValue] = React.useState(null);
 
   return (
@@ -69,7 +69,7 @@ const SearchStudent = () => {
                   <Grid item xs={2} md={2} sm={2}>
                     <Box sx={{ minWidth: 160 }}>
                       <TextField
-                        {...register("name", { required: true })}
+                        {...register("name")}
                         fullWidth
                         name="name"
                         label="Name"
@@ -87,13 +87,12 @@ const SearchStudent = () => {
                           Age
                         </InputLabel>
                         <Select
-                          {...register("age", { required: true })}
+                          {...register("age")}
                           labelId="age"
                           id="age"
-                          value={age}
+                          // value={age}
                           label="age"
-                          onChange={handleChangeAge}
-                          required
+                          // onChange={handleChangeAge}
                         >
                           <MenuItem value={10}>10</MenuItem>
                           <MenuItem value={11}>11</MenuItem>
@@ -113,13 +112,12 @@ const SearchStudent = () => {
                           School
                         </InputLabel>
                         <Select
-                          {...register("school", { required: true })}
+                          {...register("school")}
                           labelId="school"
                           id="school"
-                          value={school}
+                          // value={school}
                           label="school"
-                          onChange={handleChangeSchool}
-                          required
+                          // onChange={handleChangeSchool}
                         >
                           <MenuItem value="Model School">Model School</MenuItem>
                           <MenuItem value="Primary School">
@@ -137,13 +135,12 @@ const SearchStudent = () => {
                           Class
                         </InputLabel>
                         <Select
-                          {...register("classa", { required: true })}
+                          {...register("classa")}
                           labelId="classa"
                           id="class"
-                          value={classa}
+                          // value={classa}
                           label="classa"
-                          onChange={handleChangeClassa}
-                          required
+                          // onChange={handleChangeClassa}
                         >
                           <MenuItem value={4}>4</MenuItem>
                           <MenuItem value={5}>5</MenuItem>
@@ -159,13 +156,12 @@ const SearchStudent = () => {
                           Division
                         </InputLabel>
                         <Select
-                          {...register("division", { required: true })}
+                          {...register("division")}
                           labelId="division"
                           id="division"
-                          value={division}
+                          // value={division}
                           label="division"
-                          onChange={handleChangedivision}
-                          required
+                          // onChange={handleChangedivision}
                         >
                           <MenuItem value="A">A</MenuItem>
                           <MenuItem value="B">B</MenuItem>
@@ -199,8 +195,8 @@ const SearchStudent = () => {
               allStudent={userSearch}
               index={index}
               key={userSearch._id}
-              // setIsLoading={setIsLoading}
-              // isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
             ></ViewStudentTable>
           ))}
         </Box>

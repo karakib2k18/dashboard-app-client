@@ -52,6 +52,7 @@ const ViewStudent = () => {
         {/* View Student {currentPage} {perPageItem} */}
         View Student
       </Typography>
+
       <SearchStudent></SearchStudent>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={1}></Grid>
@@ -109,20 +110,7 @@ const ViewStudent = () => {
               variant="outlined"
               shape="rounded"
               onChange={(e, value) => setCurrentPage(value-1)}
-              // onClick={(e, value) => handlePagination(value)}
             />
-                {/* {allStudentList.length > 0 &&
-                [...Array(studentCount)?.keys()]?.map((number) => (
-                  <button
-                    key={number}
-                    onClick={() => handlePagination(number)}
-                    className={`border border-black px-4 py-2 ${
-                      number === currentPage ? "bg-gray-700 text-white" : ""
-                    }`}
-                  >
-                    {number}
-                  </button>
-                ))} */}
           </Stack>
         </Grid>
       </Grid>

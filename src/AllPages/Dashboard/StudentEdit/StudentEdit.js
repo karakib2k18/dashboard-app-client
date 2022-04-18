@@ -20,7 +20,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Paper from "@mui/material/Paper";
 import Draggable from "react-draggable";
-import { CircularProgress } from "@mui/material";
+// import { CircularProgress } from "@mui/material";
 
 function PaperComponent(props) {
   return (
@@ -37,7 +37,7 @@ export default function StudentEdit(props) {
   const [open, setOpen] = React.useState(false);
 
   const {isLoading, allStudent, setIsLoading } = props;
-  //   console.log(allStudent);
+  const { register, handleSubmit, reset } = useForm();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,33 +46,27 @@ export default function StudentEdit(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const { register, handleSubmit, reset } = useForm();
-
-  //   const [updateForm, setupdateForm] = React.useState(false);
 
   const [userUpdate, setUserUpdate] = React.useState({});
 
   const handleEditButton = (id) => {
-    // reset();
     fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
-        // const statusUpdate = allBookings.filter(()=>allbook.data === data.status)
         setUserUpdate(data);
       });
   };
 
   const onSubmit = (data) => {
-    console.log(userUpdate._id);
+    console.log(data);
     // data._id = userUpdate._id;
     let updateStatus = { ...userUpdate };
-    updateStatus.name = data.name;
-    updateStatus.age = data.age;
-    updateStatus.school = data.school;
-    updateStatus.classa = data.classa;
-    updateStatus.division = data.division;
-    updateStatus.status = data.status;
+    updateStatus.name = data?.name;
+    updateStatus.age = data?.age;
+    updateStatus.school = data?.school;
+    updateStatus.classa = data?.classa;
+    updateStatus.division = data?.division;
+    updateStatus.status = data?.status;
     setUserUpdate(updateStatus);
     console.log(data);
 
@@ -101,28 +95,28 @@ export default function StudentEdit(props) {
       });
   };
 
-  const [division, setDivision] = React.useState("");
-  const handleChangedivision = (event) => {
-    setDivision(event.target.value);
-  };
+  // const [division, setDivision] = React.useState("");
+  // const handleChangedivision = (event) => {
+  //   setDivision(event.target.value);
+  // };
 
-  const [school, setSchool] = React.useState("");
-  const handleChangeSchool = (event) => {
-    setSchool(event.target.value);
-  };
-  const [classa, setClassa] = React.useState("");
-  const handleChangeClassa = (event) => {
-    setClassa(event.target.value);
-  };
-  const [age, setAge] = React.useState("");
-  const handleChangeAge = (event) => {
-    setAge(event.target.value);
-  };
-  const [status, setstatus] = React.useState("");
-  const handleChangestatus = (event) => {
-    setstatus(event.target.value);
-  };
-  const [value, setValue] = React.useState(null);
+  // const [school, setSchool] = React.useState("");
+  // const handleChangeSchool = (event) => {
+  //   setSchool(event.target.value);
+  // };
+  // const [classa, setClassa] = React.useState("");
+  // const handleChangeClassa = (event) => {
+  //   setClassa(event.target.value);
+  // };
+  // const [age, setAge] = React.useState("");
+  // const handleChangeAge = (event) => {
+  //   setAge(event.target.value);
+  // };
+  // const [status, setstatus] = React.useState("");
+  // const handleChangestatus = (event) => {
+  //   setstatus(event.target.value);
+  // };
+  // const [value, setValue] = React.useState(null);
   return (
     <div>
       <Button
@@ -144,14 +138,10 @@ export default function StudentEdit(props) {
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
           Edit Student Details
-          {isLoading && <CircularProgress />}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={2}>
-          
-        </Grid> */}
               <Grid item xs={12} sm={12}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <FormControl fullWidth>
@@ -186,10 +176,10 @@ export default function StudentEdit(props) {
                                 <DatePicker
                                   {...register("datepiker")}
                                   //  {...register("datepiker", { required: true })}
-                                  value={value}
-                                  onChange={(newValue) => {
-                                    setValue(newValue);
-                                  }}
+                                  // value={value}
+                                  // onChange={(newValue) => {
+                                  //   setValue(newValue);
+                                  // }}
                                   renderInput={(params) => (
                                     <TextField {...params} />
                                   )}
@@ -214,9 +204,9 @@ export default function StudentEdit(props) {
                                 {...register("age", { required: true })}
                                 labelId="age"
                                 id="age"
-                                value={age}
+                                // value={age}
                                 label="age"
-                                onChange={handleChangeAge}
+                                // onChange={handleChangeAge}
                                 defaultValue={allStudent?.age}
                                 required
                               >
@@ -247,9 +237,10 @@ export default function StudentEdit(props) {
                                 {...register("school", { required: true })}
                                 labelId="school"
                                 id="school"
-                                value={school}
+                                // value={school}
+                                defaultValue={allStudent?.school}
                                 label="school"
-                                onChange={handleChangeSchool}
+                                // onChange={handleChangeSchool}
                                 required
                               >
                                 <MenuItem value="Model School">
@@ -277,9 +268,10 @@ export default function StudentEdit(props) {
                                 {...register("classa", { required: true })}
                                 labelId="classa"
                                 id="class"
-                                value={classa}
+                                // value={classa}
+                                defaultValue={allStudent?.classa}
                                 label="classa"
-                                onChange={handleChangeClassa}
+                                // onChange={handleChangeClassa}
                                 required
                               >
                                 <MenuItem value={4}>4</MenuItem>
@@ -303,9 +295,11 @@ export default function StudentEdit(props) {
                                 {...register("division", { required: true })}
                                 labelId="division"
                                 id="division"
-                                value={division}
+                                // value={division}
+                                defaultValue={allStudent?.division}
+                                
                                 label="division"
-                                onChange={handleChangedivision}
+                                // onChange={handleChangedivision}
                                 required
                               >
                                 <MenuItem value="A">A</MenuItem>
@@ -330,8 +324,8 @@ export default function StudentEdit(props) {
                                 labelId="status"
                                 id="status"
                                 label="status"
-                                value={status}
-                                onChange={handleChangestatus}
+                                // value={status}
+                                // onChange={handleChangestatus}
                                 defaultValue={allStudent?.status}
                                 required
                               >
