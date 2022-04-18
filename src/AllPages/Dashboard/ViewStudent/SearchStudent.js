@@ -20,21 +20,23 @@ const SearchStudent = () => {
   //send data to the server
   const onSubmit = (data) => {
     // console.log(data);
+    setIsLoading(true);
 
     fetch(`https://fierce-waters-04653.herokuapp.com/addstudent/`)
       .then((res) => res.json())
       .then((founddatas) => {
-        console.log(data);
+        // console.log(data);
         const searchdatas = founddatas.students;
         const statusUpdate = searchdatas.filter(
           (searchdata) =>
-          searchdata?.age === data?.age ||
-          searchdata?.school === data?.school ||
-          searchdata?.classa === data?.classa ||
-          searchdata?.division === data?.division ||
-          searchdata?.name[0] === data?.name[0]
+          searchdata.age === data.age ||
+          searchdata.school === data.school ||
+          searchdata.classa === data.classa ||
+          searchdata.division === data.division ||
+          searchdata.name[0] === data.name[0]
           );
           setUserSearchList(statusUpdate);
+          setIsLoading(false);
         });
       };
       console.log(userSearchList);
@@ -187,7 +189,7 @@ const SearchStudent = () => {
             </form>
           </Grid>
         </Grid>
-        <Box sx={{ my: 1, boxShadow: 3 }}>
+{       !isLoading && <Box sx={{ my: 1, boxShadow: 3 }}>
           {userSearchList?.map((userSearch,index) => (
             <ViewStudentTable
               setAllStudentList={setUserSearchList}
@@ -199,7 +201,7 @@ const SearchStudent = () => {
               isLoading={isLoading}
             ></ViewStudentTable>
           ))}
-        </Box>
+        </Box>}
       </Container>
     </Box>
   );

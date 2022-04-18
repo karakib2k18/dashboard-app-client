@@ -61,12 +61,12 @@ export default function StudentEdit(props) {
     console.log(data);
     // data._id = userUpdate._id;
     let updateStatus = { ...userUpdate };
-    updateStatus.name = data?.name;
-    updateStatus.age = data?.age;
-    updateStatus.school = data?.school;
-    updateStatus.classa = data?.classa;
-    updateStatus.division = data?.division;
-    updateStatus.status = data?.status;
+    updateStatus.name = data.name;
+    updateStatus.age = data.age;
+    updateStatus.school = data.school;
+    updateStatus.classa = data.classa;
+    updateStatus.division = data.division;
+    updateStatus.status = data.status;
     setUserUpdate(updateStatus);
     console.log(data);
 

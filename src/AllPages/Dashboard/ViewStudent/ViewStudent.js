@@ -54,6 +54,7 @@ const ViewStudent = () => {
       </Typography>
 
       <SearchStudent></SearchStudent>
+      
       <Grid container spacing={2}>
         <Grid item xs={12} sm={1}></Grid>
         <Grid item xs={12} sm={12}>
@@ -99,7 +100,7 @@ const ViewStudent = () => {
             sx={{ minWidth: 120, mt: 1, mb: 1, fontWeight: "bold" }}
             style={{ backgroundColor: "#750606", color: "white" }}
           >
-            Download Excel <DownloadIcon></DownloadIcon>
+            Download Excel <DownloadIcon></DownloadIcon> It's not working now
           </Button>
         </Grid>
         <Grid item xs={6} md={6} sm={6} style={{ display: "flex", justifyContent:"right"}}>

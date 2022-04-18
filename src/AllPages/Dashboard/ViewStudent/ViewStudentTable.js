@@ -1,7 +1,7 @@
 import * as React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import swal from "sweetalert";
 import Box from "@mui/material/Box";
 import StudentEdit from "../StudentEdit/StudentEdit";
@@ -45,18 +45,10 @@ const ViewStudent = (props) => {
   };
 
   return (
-
-
-      <TableRow
+    <TableRow
       key={allStudent?.index}
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
-      <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>
-
-  {allStudent.length===0 && <Typography>Nothing found</Typography> }
-      
-
-      </TableCell>
       <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>
         {/* {allStudent?._id} */}
         # {(index+1)}
@@ -102,7 +94,6 @@ const ViewStudent = (props) => {
         </Button>
       </TableCell>
     </TableRow>
-
   );
 };
 
