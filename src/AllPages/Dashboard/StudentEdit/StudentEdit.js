@@ -20,6 +20,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Paper from "@mui/material/Paper";
 import Draggable from "react-draggable";
+import { CircularProgress } from "@mui/material";
 // import { CircularProgress } from "@mui/material";
 
 function PaperComponent(props) {
@@ -328,7 +329,9 @@ export default function StudentEdit(props) {
                                 // onChange={handleChangestatus}
                                 defaultValue={allStudent?.status}
                                 required
+                                
                               >
+                                 
                                 <MenuItem value="Active">Active</MenuItem>
                                 <MenuItem value="InActive">InActive</MenuItem>
                               </Select>
@@ -337,6 +340,7 @@ export default function StudentEdit(props) {
                         </Grid>
                       </Grid>
 
+                            {isLoading && <CircularProgress />}
                       <Grid className="displayfle" item xs={12}>
                         <Grid item xs={3} sm={3}></Grid>
                         <Grid item xs={9} sm={9}>

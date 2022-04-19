@@ -64,28 +64,28 @@ const AddStudent = () => {
   // const handleChange = (event) => {
   //   setRatings(event.target.value);
   // };
-  const [division, setDivision] = React.useState("");
-  const handleChangedivision = (event) => {
-    setDivision(event.target.value);
-  };
+  // const [division, setDivision] = React.useState("");
+  // const handleChangedivision = (event) => {
+  //   setDivision(event.target.value);
+  // };
 
-  const [school, setSchool] = React.useState("");
-  const handleChangeSchool = (event) => {
-    setSchool(event.target.value);
-  };
-  const [classa, setClassa] = React.useState("");
-  const handleChangeClassa = (event) => {
-    setClassa(event.target.value);
-  };
-  const [age, setAge] = React.useState("");
-  const handleChangeAge = (event) => {
-    setAge(event.target.value);
-  };
-  const [status, setstatus] = React.useState("");
-  const handleChangestatus = (event) => {
-    setstatus(event.target.value);
-  };
-  const [value, setValue] = React.useState(null);
+  // const [school, setSchool] = React.useState("");
+  // const handleChangeSchool = (event) => {
+  //   setSchool(event.target.value);
+  // };
+  // const [classa, setClassa] = React.useState("");
+  // const handleChangeClassa = (event) => {
+  //   setClassa(event.target.value);
+  // };
+  // const [age, setAge] = React.useState("");
+  // const handleChangeAge = (event) => {
+  //   setAge(event.target.value);
+  // };
+  // const [status, setstatus] = React.useState("");
+  // const handleChangestatus = (event) => {
+  //   setstatus(event.target.value);
+  // };
+  // const [value, setValue] = React.useState(null);
 
   return (
     <Box>
@@ -126,10 +126,10 @@ const AddStudent = () => {
                           <DatePicker
                              {...register("datepiker")}
                             //  {...register("datepiker", { required: true })}
-                            value={value}
-                            onChange={(newValue) => {
-                              setValue(newValue);
-                            }}
+                            // value={value}
+                            // onChange={(newValue) => {
+                            //   setValue(newValue);
+                            // }}
                             renderInput={(params) => <TextField {...params} />}
                           />
                         </LocalizationProvider>
@@ -152,9 +152,9 @@ const AddStudent = () => {
                         {...register("age", { required: true })}
                         labelId="age"
                         id="age"
-                        value={age}
+                        // value={age}
                         label="age"
-                        onChange={handleChangeAge}
+                        // onChange={handleChangeAge}
                         required
                       >
                         <MenuItem value={10}>10</MenuItem>
@@ -183,9 +183,9 @@ const AddStudent = () => {
                           {...register("school", { required: true })}
                           labelId="school"
                           id="school"
-                          value={school}
+                          // value={school}
                           label="school"
-                          onChange={handleChangeSchool}
+                          // onChange={handleChangeSchool}
                           required
                         >
                           <MenuItem value="Model School">Model School</MenuItem>
@@ -211,9 +211,9 @@ const AddStudent = () => {
                         {...register("classa", { required: true })}
                         labelId="classa"
                         id="class"
-                        value={classa}
+                        // value={classa}
                         label="classa"
-                        onChange={handleChangeClassa}
+                        // onChange={handleChangeClassa}
                         required
                       >
                         <MenuItem value={4}>4</MenuItem>
@@ -237,9 +237,9 @@ const AddStudent = () => {
                         {...register("division", { required: true })}
                         labelId="division"
                         id="division"
-                        value={division}
+                        // value={division}
                         label="division"
-                        onChange={handleChangedivision}
+                        // onChange={handleChangedivision}
                         required
                       >
                         <MenuItem value="A">A</MenuItem>
@@ -263,9 +263,9 @@ const AddStudent = () => {
                         {...register("status", { required: true })}
                         labelId="status"
                         id="status"
-                        value={status}
+                        // value={status}
                         label="status"
-                        onChange={handleChangestatus}
+                        // onChange={handleChangestatus}
                         required
                         row
                       >

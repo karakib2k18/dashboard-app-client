@@ -17,7 +17,7 @@ import SearchStudent from "./SearchStudent";
 
 const ViewStudent = () => {
   const [allStudentList, setAllStudentList] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [currentPage, setCurrentPage] =  React.useState(0);
 
   const [studentCount, setStudentCount] = React.useState(0);
